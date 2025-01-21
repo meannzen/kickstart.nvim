@@ -226,7 +226,7 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
-require('lazy').setup({
+require('lazy').setup {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -840,25 +840,14 @@ require('lazy').setup({
       }
     end,
   },
-
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'projekt0n/github-nvim-theme',
-    name = 'github-theme',
+  {
+    'slugbyte/lackluster.nvim',
     lazy = false,
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    config = function()
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-
-      -- You can configure highlights by doing something like:
-      require('github-theme').setup {}
-
-      vim.cmd.colorscheme 'github_dark'
+    priority = 1000,
+    init = function()
+      --vim.cmd.colorscheme 'lackluster'
+      vim.cmd.colorscheme 'lackluster-hack' -- my favorite
+      -- vim.cmd.colorscheme("lackluster-mint")
     end,
   },
   {
@@ -961,27 +950,7 @@ require('lazy').setup({
   -- Or use telescope!
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search
-}, {
-  ui = {
-    -- If you are using a Nerd Font: set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
-  },
-})
+}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
